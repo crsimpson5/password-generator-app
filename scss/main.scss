@@ -212,7 +212,7 @@ body {
 .container {
   width: min(100% - 2rem, 33.75rem);
   margin-inline: auto;
-  padding-block: clamp(4rem, 8vw, 8rem) 2rem;
+  padding-block: clamp(4rem, 8vw, 8.5rem) 2rem;
 }
 
 .main-grid {
