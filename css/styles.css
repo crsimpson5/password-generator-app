@@ -93,6 +93,11 @@ body {
   font-size: clamp(1rem, 0.75rem + 1vw, 1.125rem);
 }
 
+:focus-visible {
+  outline: 2px dashed white;
+  outline-offset: 2px;
+}
+
 .button {
   --bg-color: transparent;
   --border-color: var(--bg-color);
@@ -216,6 +221,10 @@ input[type=checkbox]:checked ~ .checkbox__box {
   background-repeat: no-repeat;
   background-position: center;
   border: 0;
+}
+input[type=checkbox]:focus-visible ~ .checkbox__box {
+  outline: 2px dashed white;
+  outline-offset: 2px;
 }
 
 .scale {
