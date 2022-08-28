@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Generate a randomized password">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="main.js" defer></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="main-grid | grid container">
+      <h1 class="color-light fs-md text-center">Password Generator</h1>
+
+      <div class="flex flex-row bg-light padding-left-md" style="--gap: 0.5rem">
+        <p class="output | fs-lg"></p>
+        <button class="copy-btn | button" data-type="copy">
+          <div class="visually-hidden">copy password to clipboard</div>
+          <svg class="icon" width="21" height="24">
+            <use xlink:href="images/sprites.svg#icon-copy"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="grid bg-light padding-md">
+        <div class="flex flex-row line-height-1">
+          <label for="length-range">Character Length</label>
+          <p class="length-display | color-green fs-lg">10</p>
+        </div>
+        <div class="range">
+          <input
+            type="range"
+            name="length"
+            id="length-range"
+            min="4"
+            max="16"
+            value="10"
+          />
+          <div class="range__bar"></div>
+        </div>
+        <div class="grid line-height-1" style="--gap: var(--spacing-sm)">
+          <label class="checkbox" for="uppercase">
+            <input type="checkbox" name="uppercase" id="uppercase" checked />
+            <div class="checkbox__box"></div>
+            Include Uppercase Letters
+          </label>
+          <label class="checkbox" for="lowercase">
+            <input type="checkbox" name="lowercase" id="lowercase" checked />
+            <div class="checkbox__box"></div>
+            Include Lowercase Letters
+          </label>
+          <label class="checkbox" for="numbers">
+            <input type="checkbox" name="numbers" id="numbers" checked />
+            <div class="checkbox__box"></div>
+            Include Numbers
+          </label>
+          <label class="checkbox" for="symbols">
+            <input type="checkbox" name="symbols" id="symbols" />
+            <div class="checkbox__box"></div>
+            Include Symbols
+          </label>
+        </div>
+        <div
+          class="flex flex-row padding-block-sm padding-inline-md bg-dark uppercase line-height-1"
+        >
+          <p class="color-light">Strength</p>
+          <div class="flex flex-row">
+            <span class="strength | fs-md">Medium</span>
+            <div class="scale" data-value="3">
+              <span class="scale__bar"></span>
+              <span class="scale__bar"></span>
+              <span class="scale__bar"></span>
+              <span class="scale__bar"></span>
+            </div>
+          </div>
+        </div>
+        <button class="generate-btn | button" data-type="action">
+          Generate
+          <svg class="icon" width="12" height="12">
+            <use xlink:href="images/sprites.svg#icon-arrow-right"></use>
+          </svg>
+        </button>
+      </div>
+    </main>
+  </body>
+</html>

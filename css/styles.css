@@ -1,0 +1,331 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+*::before,
+*::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --gray-200: hsl(252, 11%, 91%);
+  --gray-400: hsl(251, 9%, 53%);
+  --gray-700: hsl(247, 11%, 15%);
+  --gray-800: hsl(248, 15%, 11%);
+  --gray-900: hsl(252, 17%, 6%);
+  --green: hsl(127, 100%, 82%);
+  --yellow: hsl(42, 91%, 68%);
+  --orange: hsl(13, 95%, 66%);
+  --red: hsl(0, 91%, 63%);
+  --spacing-xs: clamp(0.875rem, 0.5rem + 2vw, 1.25rem);
+  --spacing-sm: clamp(0.875rem, 0.5rem + 2vw, 1.5rem);
+  --spacing-md: clamp(1rem, 0.5rem + 3vw, 2rem);
+}
+
+body {
+  font-family: "JetBrains Mono", monospace;
+  background-color: var(--gray-900);
+  color: var(--gray-200);
+  font-size: clamp(1rem, 0.75rem + 1vw, 1.125rem);
+}
+
+.button {
+  --bg-color: transparent;
+  --border-color: var(--bg-color);
+  --color: var(--gray-800);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  color: var(--color);
+  text-transform: uppercase;
+  padding: 1.125rem;
+}
+.button svg {
+  pointer-events: none;
+}
+.button[data-type=copy] {
+  position: relative;
+  --color: var(--green);
+  width: 5rem;
+  aspect-ratio: 1;
+}
+.button[data-type=copy]:hover {
+  --color: var(--gray-200);
+  --bg-color: hsl(0 100% 100% / 0.05);
+  --border-color: transparent;
+}
+.button[data-type=copy].active {
+  --bg-color: transparent;
+  --color: var(--green);
+}
+.button[data-type=copy].active::before {
+  position: absolute;
+  content: "COPIED";
+  top: 50%;
+  left: -70%;
+  transform: translateY(-50%);
+}
+.button[data-type=action] {
+  --bg-color: var(--green);
+}
+.button[data-type=action]:hover {
+  --border-color: var(--bg-color);
+  --color: var(--bg-color);
+  background-color: transparent;
+}
+
+.range {
+  position: relative;
+  isolation: isolate;
+  line-height: 0;
+}
+.range input[type=range] {
+  cursor: pointer;
+  width: 100%;
+  -webkit-appearance: none;
+  background-color: transparent;
+}
+.range input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  z-index: 2;
+  width: 1.75rem;
+  aspect-ratio: 1;
+  background-color: var(--gray-200);
+  border-radius: 100vw;
+}
+.range input[type=range]::-webkit-slider-thumb:hover {
+  background-color: var(--gray-800);
+  border: 2px solid var(--green);
+}
+.range input[type=range]::-moz-range-thumb {
+  z-index: 2;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: var(--gray-200);
+  border-radius: 100vw;
+  border: 0;
+}
+.range input[type=range]::-moz-range-thumb:hover, .range input[type=range]::-moz-range-thumb:active {
+  background-color: var(--gray-800);
+  box-shadow: inset 0 0 0 2px var(--green);
+}
+.range__bar {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background-image: linear-gradient(to right, var(--green) var(--width, 50%), var(--gray-800) var(--width, 50%));
+}
+
+.checkbox {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 1.25em;
+  width: fit-content;
+}
+.checkbox input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.checkbox__box {
+  width: 1.25rem;
+  aspect-ratio: 1;
+  border: 2px solid var(--border-color, var(--gray-200));
+}
+.checkbox__box:hover {
+  --border-color: var(--green);
+}
+input[type=checkbox]:checked ~ .checkbox__box {
+  background-color: var(--green);
+  background-image: url("../images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 0;
+}
+
+.scale {
+  display: flex;
+  gap: 0.4375rem;
+  height: 1.75rem;
+}
+.scale[data-value="1"] :nth-child(1) {
+  --color: var(--red);
+}
+.scale[data-value="2"] :nth-child(-n+2) {
+  --color: var(--orange);
+}
+.scale[data-value="3"] :nth-child(-n+3) {
+  --color: var(--yellow);
+}
+.scale[data-value="4"] :nth-child(-n+4) {
+  --color: var(--green);
+}
+.scale__bar {
+  width: 0.625rem;
+  border: 2px solid var(--color, var(--gray-200));
+  background-color: var(--color, transparent);
+}
+
+.container {
+  width: min(100% - 2rem, 33.75rem);
+  margin-inline: auto;
+  padding-block: clamp(4rem, 8vw, 8rem) 2rem;
+}
+
+.main-grid {
+  --gap: clamp(1rem, 0.75rem + 2vw, 1.5rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, --spacing-md);
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.flex-row {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bg-light {
+  background-color: var(--gray-700);
+}
+
+.bg-dark {
+  background-color: var(--gray-800);
+}
+
+.line-height-1 {
+  line-height: 1;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.color-light {
+  color: var(--gray-400);
+}
+
+.color-green {
+  color: var(--green);
+}
+
+.fs-md {
+  font-size: clamp(1rem, 0.5rem + 2.5vw, 1.5rem);
+}
+
+.fs-lg {
+  font-size: clamp(1.5rem, 1rem + 2vw, 2rem);
+}
+
+.padding-block-sm {
+  padding-block: var(--spacing-sm);
+}
+
+.padding-md {
+  padding: var(--spacing-md);
+}
+
+.padding-left-md {
+  padding-inline-start: var(--spacing-md);
+}
+
+.padding-inline-md {
+  padding-inline: var(--spacing-md);
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/*# sourceMappingURL=styles.css.map */
