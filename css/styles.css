@@ -74,6 +74,7 @@ select {
 :root {
   --gray-200: hsl(252, 11%, 91%);
   --gray-400: hsl(251, 9%, 53%);
+  --gray-500: hsl(253, 5%, 34%);
   --gray-700: hsl(247, 11%, 15%);
   --gray-800: hsl(248, 15%, 11%);
   --gray-900: hsl(252, 17%, 6%);
@@ -208,6 +209,7 @@ body {
   height: 0;
 }
 .checkbox__box {
+  display: inline-block;
   width: 1.25rem;
   aspect-ratio: 1;
   border: 2px solid var(--border-color, var(--gray-200));
@@ -253,11 +255,21 @@ input[type=checkbox]:focus-visible ~ .checkbox__box {
 .container {
   width: min(100% - 2rem, 33.75rem);
   margin-inline: auto;
-  padding-block: clamp(4rem, 8vw, 8rem) 2rem;
+  padding-block: clamp(4rem, 8vw, 8.5rem) 2rem;
 }
 
 .main-grid {
   --gap: clamp(1rem, 0.75rem + 2vw, 1.5rem);
+}
+
+.output {
+  width: 100%;
+  background: 0;
+  border: 0;
+  color: currentColor;
+}
+.output::placeholder {
+  color: var(--gray-500);
 }
 
 .grid {

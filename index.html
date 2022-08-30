@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Generate a randomized password">
+    <meta name="description" content="Generate a randomized password" />
     <link
       rel="icon"
       type="image/png"
@@ -26,7 +26,14 @@
       <h1 class="color-light fs-md text-center">Password Generator</h1>
 
       <div class="flex flex-row bg-light padding-left-md" style="--gap: 0.5rem">
-        <p class="output | fs-lg"></p>
+        <label for="output" class="visually-hidden"></label>
+        <input
+          type="text"
+          id="output"
+          class="output | fs-lg"
+          placeholder="P4$5W0rD!"
+          disabled
+        />
         <button class="copy-btn | button" data-type="copy">
           <span class="visually-hidden">copy password to clipboard</span>
           <svg class="icon" width="21" height="24">
@@ -63,7 +70,7 @@
             Include Lowercase Letters
           </label>
           <label class="checkbox" for="numbers">
-            <input type="checkbox" name="numbers" id="numbers" checked />
+            <input type="checkbox" name="numbers" id="numbers" />
             <span class="checkbox__box"></span>
             Include Numbers
           </label>
@@ -78,8 +85,8 @@
         >
           <p class="color-light">Strength</p>
           <div class="flex flex-row">
-            <span class="strength | fs-md">Medium</span>
-            <div class="scale" data-value="3">
+            <span class="strength | fs-md">Weak</span>
+            <div class="scale" data-value="2">
               <span class="scale__bar"></span>
               <span class="scale__bar"></span>
               <span class="scale__bar"></span>

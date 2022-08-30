@@ -118,7 +118,7 @@ function generatePassword() {
 }
 
 function setPassword() {
-  output.textContent = generatePassword();
+  output.value = generatePassword();
   copyBtn.classList.remove("active");
 }
 
@@ -129,6 +129,5 @@ generateBtn.addEventListener("click", setPassword);
 function init() {
   lengthDisplay.textContent = lengthRange.value;
   setStrength(evalStrength());
-  setPassword();
 }
 init();

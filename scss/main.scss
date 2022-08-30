@@ -3,6 +3,7 @@
 :root {
   --gray-200: hsl(252, 11%, 91%);
   --gray-400: hsl(251, 9%, 53%);
+  --gray-500: hsl(253, 5%, 34%);
   --gray-700: hsl(247, 11%, 15%);
   --gray-800: hsl(248, 15%, 11%);
   --gray-900: hsl(252, 17%, 6%);
@@ -217,6 +218,17 @@ body {
 
 .main-grid {
   --gap: clamp(1rem, 0.75rem + 2vw, 1.5rem);
+}
+
+.output {
+  width: 100%;
+  background: 0;
+  border: 0;
+  color: currentColor;
+
+  &::placeholder {
+    color: var(--gray-500);
+  }
 }
 
 // Utilities
